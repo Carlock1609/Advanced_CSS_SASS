@@ -23,6 +23,7 @@ body {
 }
 
 .header {
+    position: relative;
     height: 95vh;
     /* Apparently yo can set params, the first one is over the second */
     /* to right lets linear-grad know what direction the colors are shown */
@@ -35,5 +36,41 @@ body {
     /* Fixes image to the top, top never changes when movin screen, only sides crop */
     background-position: top;
     /* This is how you can form your image, setting (x y) on each corner */
-    clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    /* in relation to the parent element */
+    top: 40%;
+    left: 50%;
+    /* THIS IS HOW TO MAKEE IT RESPONSIVE */
+    /* in relation to element itself  */
+    transform: translate(-50%, -50%);
+}
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
 }
