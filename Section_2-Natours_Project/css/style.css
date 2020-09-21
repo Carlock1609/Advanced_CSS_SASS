@@ -1,0 +1,39 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* This starts everything clean taking awy ANY padding and margin in elements on render */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    /* Apparently yo can set params, the first one is over the second */
+    /* to right lets linear-grad know what direction the colors are shown */
+    background-image: linear-gradient(to right bottom, 
+        #7ed56fc5, 
+        #28b485d0), 
+        url(../img/hero.jpg);
+    /* tries to cover element it is in */
+    background-size: cover;
+    /* Fixes image to the top, top never changes when movin screen, only sides crop */
+    background-position: top;
+    /* This is how you can form your image, setting (x y) on each corner */
+    clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%);
+}
