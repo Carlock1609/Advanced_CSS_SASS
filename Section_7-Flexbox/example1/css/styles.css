@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+    /* reverses direction but not the order. */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column-reverse; */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    /* wraps items that dont fit. */
+    flex-wrap: wrap;
+    /* this aligns the rows instead of the items like align-items */
+    /* ALIGNS ROWS */
+    align-content: stretch;
+
+    height: 1000px;
+    
+    padding: 10px;
+    background: #ccc;
+}
+
+.item {
+    background: #f1425d;
+    padding: 40px;
+    margin: 30px;
+    color: #fff;
+    font-size: 40px;
+    margin: 5px;
+    /*  occupying all the space they can */
+    flex-grow: 1;
+}
+.i2 {
+    height: 200px;
+    /* grows times parent */
+    /* flex-grow: 3; */
+    /* flex-basis sets width of div, but decreases when Viewport shrinks - responsive */
+    /* flex-basis: 300px; */
+    /* setting shrink to 0 prevents the div from shrinking when viewport decreases. */
+    /* flex-shrink: 0;  */
+    /* This is the shorthand syntax for above */
+    /* grow, shring, basis */
+    flex: 0 1 300px;
+}
+.i3 {
+    order: 1;
+    flex: 1;
+}
+.i4 {
+    /* this overwrites align-items for a signle element */
+    /* align-self: flex-end; */
+    /* sets the order of the elements */
+    order: -1;
+}

@@ -1,0 +1,36 @@
+.container {
+    max-width: 120rem;
+    min-height: 50rem;
+    margin: 8rem auto;
+    background: var(--color-grey-light-1);
+    box-shadow: var(--shadow-dark);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7rem;
+
+    font-size: 1.4rem;
+    background: #fff;
+    border-bottom: var(--color-grey-light-2);
+}
+.content {
+    display: flex;
+
+}
+
+.sidebar {
+    // grow, shrink, basis
+    // We dont want it to grow if theres space, and not to shrink if theres not enough
+    flex: 0 0 18%;
+
+    background: var(--color-grey-dark-1);
+}
+
+.hotel-view {
+    // should grow as much as it can - 82%
+    flex: 1;
+    background: #fff;
+}
