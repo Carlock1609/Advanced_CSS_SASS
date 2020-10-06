@@ -22,6 +22,9 @@
 }
 
 .sidebar {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
     // grow, shrink, basis
     // We dont want it to grow if theres space, and not to shrink if theres not enough
     flex: 0 0 18%;
@@ -31,6 +34,10 @@
 
 .hotel-view {
     // should grow as much as it can - 82%
+    // TEST
+    height: 80rem;
+    // 
+
     flex: 1;
     background: #fff;
 }
