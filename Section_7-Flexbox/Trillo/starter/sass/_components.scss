@@ -12,6 +12,12 @@
     justify-content: center;
     flex: 0 0 40%;
 
+    @media only screen and (max-width: $bp-smallest) {
+      order: 1;
+      flex: 0 0 100%;
+      background: var(--color-grey-light-2);
+    }
+
     &__input {
         width: 90%;
 
@@ -130,12 +136,22 @@
   font-size: 1.4rem;
   list-style: none;
   margin-top: 3.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
     // psuedo ":not" is a conditional say if its not the last child do this.
     &:not(:last-child) {
       margin-bottom: .5rem;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 1;
     }
   }
   &__item::before {
@@ -174,6 +190,16 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      padding: 1.5rem ;
+    }
   }
   &__icon {
     width: 1.75rem;
@@ -181,6 +207,13 @@
     margin-right: 2rem;
     // color of parent or current element
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-small) {
+      margin: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-bottom: .7rem;
+    }
   }
 }
 
@@ -192,6 +225,9 @@
   text-align: center;
   padding: 2.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 
@@ -220,7 +256,12 @@
 		font-weight: 300;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		padding: 1.5rem 3rem;
+    padding: 1.5rem 3rem;
+    
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
 	}
 	&__stars {
 		display: flex;
@@ -253,16 +294,28 @@
 		align-self: stretch;
 
 		background: var(--color-primary);
-		color: white;
+    color: white;
+    
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
 	}
 	&__rating-average {
 		font-size: 2.25rem;
 		font-weight: 300;
-		margin-bottom: -3px;
+    margin-bottom: -3px;
+    
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
 	}
 	&__rating-count {
 		font-size: .8rem;
-		text-transform: uppercase;
+    text-transform: uppercase;
+    
+    @media only screen and (max-width: $bp-small) {
+      font-size: .5rem;
+    }
 	}
 }
 
@@ -356,15 +409,18 @@
     // Problem with using SVG in CSS, is we don't have a way to select it to change the color. This is where Masks come in.
     // background: url(../img/chevron-thin-right.svg);
     // background-size: cover;
-
+    
     // Newer browser - masks
-    background: var(--color-primary);
-    // browsers with webkit
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    // browsers without webkit if they get updated
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+    @supports (-webkit-mask-image: url()) or (-webkit-mask-image: url(())) {
+      background: var(--color-primary);
+      
+      // browsers with webkit
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      // browsers without webkit if they get updated
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+    }
   }
 }
 
@@ -383,7 +439,7 @@
   }
 
   &__friends {
-
+    display: flex;
   }
 
   &__photo {
@@ -396,7 +452,7 @@
     border: 3px solid #fff;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -410,6 +466,11 @@
   padding: 3rem;
   margin-bottom: 3.5rem;
   overflow: hidden;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -468,6 +529,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     font-size: 2rem;
