@@ -1,117 +1,3 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-/* This starts everything clean taking awy ANY padding and margin in elements on render */
-/* Psuedo elements are initialized to take care of any psuedo elements we use. */
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  /* enforces inheriting on box-sizing */
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-/* Changing px to rem with one query instead of multiple */
-/* THIS IS THE LAGORITHM TO USE */
-/* SET PARENT TO 10px GO TO ALL THE PX's BELOW AND DEVIDE BY THIS. */
-/* 30px DIVIDED BY 10px IS 3rem */
-html {
-  /* This just makes font-size whatever the user chooses on browser side */
-  /* 62.5 is 100% divide by 16px the default */
-  font-size: 62.5%;
-}
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.header {
-  position: relative;
-  height: 95vh;
-  /* Apparently yo can set params, the first one is over the second */
-  /* to right lets linear-grad know what direction the colors are shown */
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#7ed56f), color-stop(#7ed56f, 0.08), to(0.08)), url(../img/hero.jpg);
-  background-image: linear-gradient(to right bottom, #7ed56f, 0.08 #7ed56f, 0.08), url(../img/hero.jpg);
-  /* tries to cover element it is in */
-  background-size: cover;
-  /* Fixes image to the top, top never changes when movin screen, only sides crop */
-  background-position: top;
-  /* This is how you can form your image, setting (x y) on each corner */
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-          clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
-
-.header__logo {
-  height: 3.5rem;
-}
-
-.header__text-box {
-  position: absolute;
-  /* in relation to the parent element */
-  top: 40%;
-  left: 50%;
-  /* THIS IS HOW TO MAKEE IT RESPONSIVE */
-  /* in relation to element itself  */
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  /* This fixes the anchor tag because its text */
-  text-align: center;
-}
-
-.header__heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  margin-bottom: 6rem;
-}
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  -webkit-animation-name: moveInLeft;
-          animation-name: moveInLeft;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
-}
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.7rem;
-  -webkit-animation-name: moveInRight;
-          animation-name: moveInRight;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
-}
-
 @-webkit-keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -206,9 +92,53 @@ body {
   }
 }
 
-/* link: anchor tag itself, visited: when link is clicked. These shoud always be together */
-.btn:link,
-.btn:visited {
+/* This starts everything clean taking awy ANY padding and margin in elements on render */
+/* Psuedo elements are initialized to take care of any psuedo elements we use. */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* enforces inheriting on box-sizing */
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+/* Changing px to rem with one query instead of multiple */
+/* THIS IS THE LAGORITHM TO USE */
+/* SET PARENT TO 10px GO TO ALL THE PX's BELOW AND DEVIDE BY THIS. */
+/* 30px DIVIDED BY 10px IS 3rem */
+html {
+  /* This just makes font-size whatever the user chooses on browser side */
+  /* 62.5 is 100% divide by 16px the default */
+  font-size: 62.5%;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+}
+
+.btn {
+  /* link: anchor tag itself, visited: when link is clicked. These shoud always be together */
+  /* when link hovered */
+  /* The box shadow makes the button seem like its popping off page, when clicked, goes back down */
+  /* When link clicked */
+  /* Psuedo Element */
+  /* This is kind of like another layer of the same button */
+  /* treated like a child of the element thats why we set height and width */
+}
+
+.btn:link, .btn:visited {
   /* This fixes inline elements that have padding height etc,. */
   display: inline-block;
   text-transform: uppercase;
@@ -223,8 +153,6 @@ body {
   font-size: 1.6rem;
 }
 
-/* when link hovered */
-/* The box shadow makes the button seem like its popping off page, when clicked, goes back down */
 .btn:hover {
   -webkit-transform: translateY(-0.03rem);
           transform: translateY(-0.03rem);
@@ -233,7 +161,14 @@ body {
           box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-/* When link clicked */
+.btn:hover::after {
+  /* scale increases element */
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+          transform: scaleX(1.4) scaleY(1.6);
+  /* transiion from opacity fades in and out because of transition .4 */
+  opacity: 0;
+}
+
 .btn:active {
   -webkit-transform: translateY(-0.01rem);
           transform: translateY(-0.01rem);
@@ -246,9 +181,10 @@ body {
   color: #777;
 }
 
-/* Psuedo Element */
-/* This is kind of like another layer of the same button */
-/* treated like a child of the element thats why we set height and width */
+.btn--white::after {
+  background-color: #fff;
+}
+
 .btn::after {
   /* nessacary to specifiy content or it wont work */
   content: "";
@@ -264,23 +200,134 @@ body {
   transition: all .4s;
 }
 
-.btn--white::after {
-  background-color: #fff;
-}
-
-.btn:hover::after {
-  /* scale increases element */
-  -webkit-transform: scaleX(1.4) scaleY(1.6);
-          transform: scaleX(1.4) scaleY(1.6);
-  /* transiion from opacity fades in and out because of transition .4 */
-  opacity: 0;
-}
-
 .btn--animated {
   -webkit-animation: moveInBottom .5s ease-out .75s;
           animation: moveInBottom .5s ease-out .75s;
   /* automatically apply styles 0% before animation starts */
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
+}
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row [class^='col-'] {
+  background-color: rebeccapurple;
+  float: left;
+}
+
+.row [class^='col-']:not(:last-child) {
+  margin-right: 6rem;
+}
+
+.row .col-1-of-2 {
+  width: calc((100% - 6rem) / 2);
+}
+
+.row .col-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3);
+}
+
+.row .col-2-of-3 {
+  width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem);
+}
+
+.row .col-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4);
+}
+
+.row .col-2-of-4 {
+  width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem);
+}
+
+.row .col-3-of-4 {
+  width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem);
+}
+
+.header {
+  position: relative;
+  height: 95vh;
+  /* Apparently yo can set params, the first one is over the second */
+  /* to right lets linear-grad know what direction the colors are shown */
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(126, 213, 111, 0.8)), to(rgba(40, 180, 133, 0.8))), url(../img//hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img//hero.jpg);
+  /* tries to cover element it is in */
+  background-size: cover;
+  /* Fixes image to the top, top never changes when movin screen, only sides crop */
+  background-position: top;
+  /* This is how you can form your image, setting (x y) on each corner */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-box {
+  position: absolute;
+  /* in relation to the parent element */
+  top: 40%;
+  left: 50%;
+  /* THIS IS HOW TO MAKEE IT RESPONSIVE */
+  /* in relation to element itself  */
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /* This fixes the anchor tag because its text */
+  text-align: center;
+  color: #fff;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  -webkit-animation-name: moveInLeft;
+          animation-name: moveInLeft;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.7rem;
+  -webkit-animation-name: moveInRight;
+          animation-name: moveInRight;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
 }
 /*# sourceMappingURL=main.css.map */

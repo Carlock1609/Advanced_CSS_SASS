@@ -1,210 +1,24 @@
-/*
-COLORS:
+// This file is used like index.html, when compiled it looks for this file and sees all the imports
+// this file is used for setting up and building the architecture
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+// importing partial - this is like importing color/animation/typography variables to use
+// abstracts
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-*/
+// base
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
 
-/* This starts everything clean taking awy ANY padding and margin in elements on render */
-/* Psuedo elements are initialized to take care of any psuedo elements we use. */
+// components
+@import "components/buttons";
 
+// pages
+@import "pages/home";
 
-$color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
-
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    /* enforces inheriting on box-sizing */
-    box-sizing: inherit;
-}
-/* Changing px to rem with one query instead of multiple */
-/* THIS IS THE LAGORITHM TO USE */
-/* SET PARENT TO 10px GO TO ALL THE PX's BELOW AND DEVIDE BY THIS. */
-/* 30px DIVIDED BY 10px IS 3rem */
-html {
-    /* This just makes font-size whatever the user chooses on browser side */
-    /* 62.5 is 100% divide by 16px the default */
-    font-size: 62.5%;
-}
-
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    /* font-size: 16px; */
-    line-height: 1.7;
-    color: #777;
-    padding: 3rem;
-
-    box-sizing: border-box;
-}
-
-.header {
-    position: relative;
-    height: 95vh;
-    /* Apparently yo can set params, the first one is over the second */
-    /* to right lets linear-grad know what direction the colors are shown */
-    background-image: linear-gradient(to right bottom, 
-        $color-primary-light, .08 
-        $color-primary-light, .08), 
-        url(../img/hero.jpg);
-    /* tries to cover element it is in */
-    background-size: cover;
-    /* Fixes image to the top, top never changes when movin screen, only sides crop */
-    background-position: top;
-    /* This is how you can form your image, setting (x y) on each corner */
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
-.header__logo {
-    height: 3.5rem;
-}
-
-.header__text-box {
-    position: absolute;
-    /* in relation to the parent element */
-    top: 40%;
-    left: 50%;
-    /* THIS IS HOW TO MAKEE IT RESPONSIVE */
-    /* in relation to element itself  */
-    transform: translate(-50%, -50%);
-    /* This fixes the anchor tag because its text */
-    text-align: center;
-}
-.header__heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-}
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-}
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.7rem;
-    animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-}
-
-@keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-    80% {
-        transform: translateX(1rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-@keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-    80% {
-        transform: translateX(-1rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-@keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* link: anchor tag itself, visited: when link is clicked. These shoud always be together */
-.btn:link,
-.btn:visited {
-    /* This fixes inline elements that have padding height etc,. */
-    display: inline-block;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    /* This gives all transistions on btn .2s duration */
-    transition: all .2s;
-    /* NEED THIS to make the psuedo elements positioning to work */
-    position: relative;
-    font-size: 1.6rem;
-}
-/* when link hovered */
-/* The box shadow makes the button seem like its popping off page, when clicked, goes back down */
-.btn:hover {
-    transform: translateY(-.03rem);
-    /* X Y BLUR COLOR */
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-}
-/* When link clicked */
-.btn:active {
-    transform: translateY(-.01rem);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
-}
-.btn--white {
-    background-color: #fff;
-    color: #777;
-}
-
-
-/* Psuedo Element */
-/* This is kind of like another layer of the same button */
-/* treated like a child of the element thats why we set height and width */
-.btn::after {
-    /* nessacary to specifiy content or it wont work */
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
-.btn--white::after {
-    background-color: #fff;
-}
-.btn:hover::after {
-    /* scale increases element */
-    transform: scaleX(1.4) scaleY(1.6);
-    /* transiion from opacity fades in and out because of transition .4 */
-    opacity: 0;
-}
-
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    /* automatically apply styles 0% before animation starts */
-    animation-fill-mode: backwards;
-}
+// layout
+@import "layout/grid";
+@import "layout/header";

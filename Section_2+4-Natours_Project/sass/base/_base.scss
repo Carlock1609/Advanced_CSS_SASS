@@ -1,0 +1,24 @@
+/* This starts everything clean taking awy ANY padding and margin in elements on render */
+/* Psuedo elements are initialized to take care of any psuedo elements we use. */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /* enforces inheriting on box-sizing */
+    box-sizing: inherit;
+}
+/* Changing px to rem with one query instead of multiple */
+/* THIS IS THE LAGORITHM TO USE */
+/* SET PARENT TO 10px GO TO ALL THE PX's BELOW AND DEVIDE BY THIS. */
+/* 30px DIVIDED BY 10px IS 3rem */
+html {
+    /* This just makes font-size whatever the user chooses on browser side */
+    /* 62.5 is 100% divide by 16px the default */
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
