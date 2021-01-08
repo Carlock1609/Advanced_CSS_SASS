@@ -9,6 +9,12 @@ Dark green: #28b485
 
 /* This starts everything clean taking awy ANY padding and margin in elements on render */
 /* Psuedo elements are initialized to take care of any psuedo elements we use. */
+
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
 *,
 *::after,
 *::before {
@@ -44,8 +50,8 @@ body {
     /* Apparently yo can set params, the first one is over the second */
     /* to right lets linear-grad know what direction the colors are shown */
     background-image: linear-gradient(to right bottom, 
-        #7ed56fc5, 
-        #28b485d0), 
+        $color-primary-light, .08 
+        $color-primary-light, .08), 
         url(../img/hero.jpg);
     /* tries to cover element it is in */
     background-size: cover;
@@ -169,6 +175,7 @@ body {
     background-color: #fff;
     color: #777;
 }
+
 
 /* Psuedo Element */
 /* This is kind of like another layer of the same button */
